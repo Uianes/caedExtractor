@@ -26,11 +26,20 @@ function extrairDadosDaTabela() {
       return 'Tabela não encontrada na terceira div.';
   }
 
+  // Extraindo o cabeçalho
+  const headerCells = Array.from(table.querySelectorAll('thead th'));
+  const header = headerCells.map(cell => cell.innerText.trim());
+
+  // Extraindo os dados dos alunos
   const rows = Array.from(table.querySelectorAll('tbody tr'));
   const data = rows.map(row => {
       const cells = Array.from(row.querySelectorAll('td'));
       return cells.map(cell => cell.innerText.trim());
   });
 
-  return data;
+  // Retornando um objeto com o cabeçalho e os dados
+  return {
+      header,
+      data
+  };
 }
