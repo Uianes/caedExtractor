@@ -37,9 +37,19 @@ function extrairDadosDaTabela() {
       return cells.map(cell => cell.innerText.trim());
   });
 
-  // Retornando um objeto com o cabeçalho e os dados
+  // Extraindo a opção selecionada do select (Etapa)
+  const selectEtapa = document.getElementById('selectrl0k62e2f97eDADOS.VL_FILTRO_ETAPA');
+  const selectedEtapa = selectEtapa ? selectEtapa.options[selectEtapa.selectedIndex].text.trim() : 'Nenhuma etapa selecionada';
+  
+  // Extraindo a disciplina selecionada do select
+  const selectDisciplina = document.getElementById('selectuwbpa24dd3d6DADOS.VL_FILTRO_DISCIPLINA');
+  const selectedDisciplina = selectDisciplina ? selectDisciplina.options[selectDisciplina.selectedIndex].text.trim() : 'Nenhuma disciplina selecionada';
+
+  // Retornando um objeto com o cabeçalho, dados, a etapa selecionada e a disciplina selecionada
   return {
       header,
-      data
+      data,
+      selectedEtapa,
+      selectedDisciplina
   };
 }
